@@ -1,0 +1,76 @@
+set nocompatible
+set nohlsearch
+set modeline
+set nu
+set ai
+set si
+
+" cross hair mode
+"set cursorline
+"set cursorcolumn
+
+" enable use of the mouse
+set mouse=a
+
+" list completion alternatives
+set wildmode=list:longest
+
+"au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
+"au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+"au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+"au VimEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+
+
+" word wrapping
+set wrap
+set linebreak
+set nolist
+
+set nofoldenable
+
+"colorscheme elflord
+
+"  Install Vundle
+"git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+"  run :PluginInstall
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+"Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'mileszs/ack.vim'
+Plugin 'moll/vim-bbye'
+call vundle#end()
+
+if executable('ag')
+	let g:ackprg = 'ag --nogroup --nocolor --column'
+endif
+"
+"
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_enable_perl_checker = 1
+let g:syntastic_loc_list_height = 1
+
+cmap w!! w !sudo tee > /dev/null % <CR>
+"map w!! w !sudo tee > /dev/null % <CR>
+
+set ttymouse=xterm2
+set ttyfast
+
+" eliminate trailing whitespace
+autocmd BufWritePre *.py %s/\s\+$//e
+set ttimeoutlen=10
+
+
+nnoremap <Leader>q :Bdelete<CR>
+
+
