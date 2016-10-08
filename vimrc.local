@@ -11,7 +11,7 @@ endif
 
 "let g:syntastic_python_checker = 'pyflakes'
 "execute pathogen#infect('stuff/{}')
-set guifont=Monaco:h16
+set guifont=Monaco:h14
 
 " keystrokes - moving around
 set whichwrap=h,l,~,[,]
@@ -89,15 +89,15 @@ set shortmess=atI
 set matchpairs+=<:>
 
 " text formating
-set shiftwidth=4
-set ts=4
-set shiftround
-set noexpandtab
-set autoindent
-syntax on
-
-set tw=120 ts=4 sw=4 sta et sts=4 ai
-set noexpandtab
+"set shiftwidth=4
+"set ts=4
+"set shiftround
+"set noexpandtab
+"set autoindent
+"syntax on
+"
+"set tw=120 ts=4 sw=4 sta et sts=4 ai
+"set noexpandtab
 
 
 " move to automatically format c++ code...
@@ -136,11 +136,9 @@ nmap ZQ :qa!<CR>
 ":%s/$/, /
 
 set nohlsearch "!!!!
-set mouse=
 let python_highlight_all = 1
 
 set noeb vb t_vb=
-
 
 " TMUX maddness
 

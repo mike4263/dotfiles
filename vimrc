@@ -1,15 +1,17 @@
 "  Install Vundle
 "git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-"  run :PluginInstall
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
+Plugin 'pangloss/vim-javascript'
+"lugin 'scrooloose/syntastic'
 "Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'mileszs/ack.vim'
 Plugin 'moll/vim-bbye'
+Plugin 'tpope/vim-fugitive'
+Plugin 'junegunn/fzf'
 call vundle#end()
 
 
@@ -34,12 +36,13 @@ set backupcopy=yes                                           " see :help crontab
 set clipboard=unnamed                                        " yank and paste with the system clipboard
 set directory-=.                                             " don't store swapfiles in the current directory
 set encoding=utf-8
-"set expandtab!                                                " expand tabs to spaces
+set expandtab!                                                " expand tabs to spaces
 set ignorecase                                               " case-insensitive search
 set incsearch                                                " search as you type
 set laststatus=2                                             " always show statusline
-set list                                                     " show trailing whitespace
-set listchars=tab:▸\ ,trail:▫
+set list!                                                     " show trailing whitespace
+"set listchars=tab:▸\ ,trail:▫
+set mouse=a
 set number                                                   " show line numbers
 set ruler                                                    " show where you are
 set scrolloff=3                                              " show context above/below cursorline
@@ -47,13 +50,11 @@ set shiftwidth=2                                             " normal mode inden
 set showcmd
 set smartcase                                                " case-sensitive search if any caps
 set softtabstop=2                                            " insert mode tab and backspace use 2 spaces
-set tabstop=8                                                " actual tabs occupy 8 characters
+set tabstop=2                                                " actual tabs occupy 8 characters
 set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
 set wildmenu                                                 " show a navigable menu for tab completion
 set wildmode=longest,list,full
 
-" Enable basic mouse behavior such as resizing buffers.
-set mouse=a
 "if exists('$TMUX')  " Support resizing in tmux
 "  set ttymouse=xterm2
 "endif
@@ -113,16 +114,16 @@ set backspace=indent,eol,start " this just started breaking
 
 "
 "
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_enable_perl_checker = 1
-let g:syntastic_loc_list_height = 1
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+"let g:syntastic_enable_perl_checker = 1
+"let g:syntastic_loc_list_height = 1
 
 " Go crazy!
 if filereadable(expand("~/dotfiles/vimrc.local"))
@@ -140,3 +141,7 @@ endif
 
 set modeline
 set modelines=5
+
+" its 2016
+set tw=160
+
