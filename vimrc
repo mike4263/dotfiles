@@ -40,7 +40,7 @@ set expandtab!                                                " expand tabs to s
 set ignorecase                                               " case-insensitive search
 set incsearch                                                " search as you type
 set laststatus=2                                             " always show statusline
-set list!                                                     " show trailing whitespace
+"set list                                                     " show trailing whitespace
 "set listchars=tab:▸\ ,trail:▫
 set mouse=a
 set number                                                   " show line numbers
@@ -144,4 +144,3 @@ set modelines=5
 
 " its 2016
 set tw=160
-
