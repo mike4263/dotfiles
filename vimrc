@@ -40,7 +40,7 @@ set expandtab!                                                " expand tabs to s
 set ignorecase                                               " case-insensitive search
 set incsearch                                                " search as you type
 set laststatus=2                                             " always show statusline
-set list!                                                     " show trailing whitespace
+set nolist                                                     " show trailing whitespace
 "set listchars=tab:▸\ ,trail:▫
 set mouse=a
 set number                                                   " show line numbers
@@ -59,6 +59,7 @@ set wildmode=longest,list,full
 "  set ttymouse=xterm2
 "endif
 set ttymouse=xterm2
+set ttyfast
 
 " keyboard shortcuts
 let mapleader = ','
@@ -125,23 +126,192 @@ set backspace=indent,eol,start " this just started breaking
 "let g:syntastic_enable_perl_checker = 1
 "let g:syntastic_loc_list_height = 1
 
-" Go crazy!
-if filereadable(expand("~/dotfiles/vimrc.local"))
-  " In your .vimrc.local, you might like:
-  "
-  " set autowrite
-  " set nocursorline
-  " set nowritebackup
-  " set whichwrap+=<,>,h,l,[,] " Wrap arrow keys between lines
-  "
-  " autocmd! bufwritepost .vimrc source ~/.vimrc
-  " noremap! jj <ESC>
-  source ~/dotfiles/vimrc.local
-endif
 
 set modeline
 set modelines=5
 
 " its 2016
-set tw=160
+set tw=250
 
+set nocursorline " don't highlight current line
+
+" keyboard shortcuts
+inoremap jj <ESC>
+
+" gui settings
+if (&t_Co == 256 || has('gui_running'))
+  colorscheme desert
+endif
+
+
+"let g:syntastic_python_checker = 'pyflakes'
+"execute pathogen#infect('stuff/{}')
+set guifont=Monaco:h14
+
+" keystrokes - moving around
+set whichwrap=h,l,~,[,]
+noremap <Space> <PageDown>
+noremap <BS> <PageUp>
+
+noremap Y y$
+command! Nt :NERDTree
+nnoremap <F1> :help<Space>
+nmap <F2> :source ~/.vimrc<CR>
+nmap <F3> :e ~/.vimrc.local<CR>
+
+
+" : Pressing F5 lists all buffer, just type number
+map   <F5> :mks!<CR><c-s><F11>
+
+" Make <F8> diff the current buffer with it's file on disk.
+nmap <F8> :w !diff -w -B -C 5 -p - % >tmp.diff<CR>:sp tmp.diff<CR>
+
+
+set pastetoggle=<F10>           " pastetoggle (sane indentation on pastes)
+map <F11> :!git commit -a -m '
+map <F12> :!git commit % -m '
+
+" ¿ why is the upside down question mark so awesome?
+
+" mapping copy, paste, cut to alt
+map <A-c> "+y
+map <A-x> "+x
+map <A-v> "+p
+
+
+imap <c-z> <c-o>u
+
+" use <Ctrl>+N/<Ctrl>+P to cycle through files:
+nnoremap <C-N> :next<CR>
+nnoremap <C-P> :prev<CR>
+
+
+imap <C-j> <ESC><C-W>j
+imap <C-h> <ESC><C-W>h
+imap <C-k> <ESC><C-W>k
+imap <C-l> <ESC><C-W>l
+
+map <A-Down> dd p
+map <A-Up> dd <up>P
+
+noremap <C-e>  3<C-e>
+noremap <C-y>  3<C-y>
+
+map H ^
+map L $
+
+set dir=~/.vimbkup/
+set backupdir=~/.vimbkup/
+
+
+set backspace=indent,eol,start
+set history=1000
+
+" ugh, read the docs for this line
+"set viminfo=%,'40,<100,f1,h
+
+"set wildmenu
+"set wildmode=list:longest,full
+"
+
+" avoiding the "Hit enter to continue prompts"
+set shortmess=atI
+"
+    set viewoptions=folds,options,cursor,unix,slash " better unix / windows compatibility
+    set virtualedit=onemore         " allow for cursor beyond last character
+
+
+set matchpairs+=<:>
+
+" text formating
+"set shiftwidth=4
+"set ts=4
+"set shiftround
+"set noexpandtab
+"set autoindent
+"syntax on
+"
+"set tw=120 ts=4 sw=4 sta et sts=4 ai
+"set noexpandtab
+
+
+" move to automatically format c++ code...
+set formatoptions=crnt
+
+set browsedir=buffer
+set wildignore=*.orig,*.exe
+
+" vim comments
+set comments+=b:\"
+
+augroup filetype
+        autocmd BufNewFile,BufRead *.txt set filetype=human
+        autocmd BufNewFile,BufRead *.md set filetype=human
+augroup END        
+
+
+autocmd FileType c,cpp,slang,java,jsp set cindent
+autocmd FileType perl set smartindent
+autocmd FileType css set smartindent
+autocmd FileType help set nonumber
+autocmd FileType human set nonumber
+
+
+set ignorecase
+set smartcase
+set incsearch
+set infercase
+
+command! Bx :Bdelete
+
+
+" Sane ZZ & ZQ for windows
+nmap ZZ :wqa<CR>
+nmap ZQ :qa!<CR>
+":%s/$/, /
+
+set nohlsearch "!!!!
+let python_highlight_all = 1
+
+set noeb vb t_vb=
+
+" TMUX maddness
+
+"let g:tmux_navigator_no_mappings = 1
+
+noremap <C-j> <C-W>j
+noremap <C-h> <C-W>h
+noremap <C-k> <C-W>k
+noremap <C-l> <C-W>l
+
+"nnoremap <silent> <C-j> :TmuxNavigateLeft<cr>
+"nnoremap <silent> <C-h> :TmuxNavigateDown<cr>
+"nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+"nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+"nnoremap <silent> Previous-Mapping} :TmuxNavigatePrevious<c
+"let g:tmux_navigator_save_on_switch = 1
+
+cmap w!! w !sudo tee > /dev/null % <CR>
+"map w!! w !sudo tee > /dev/null % <CR>
+
+" eliminate trailing whitespace
+autocmd BufWritePre *.py %s/\s\+$//e
+set ttimeoutlen=10
+
+
+nnoremap <Leader>q :Bdelete<CR>
+
+
+" these were in my AFS VM, odd cursor behavior
+"au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
+"au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+"au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+"au VimEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+"
+"
+"
+"
+" add local only changes here
+if filereadable(expand("~/.vimrc.local"))
+  source ~/.vimrc.local
+endif
