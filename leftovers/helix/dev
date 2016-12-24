@@ -1,0 +1,24 @@
+#export JAVA_HOME="/Library/Java/Home"
+#export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+#export JAVA_HOME=`/usr/libexec/java_home -v 1.6`
+#export JBOSS_HOME=/opt/jboss/jboss-eap-6.2/
+export PATH=~/.rbenv/shims/:$JAVA_HOME/bin:$PATH:/home/mike/dpm/lib/:$JBOSS_HOME/bin/
+
+export PROFILE="slim"
+export JBOSS_PROFILE="slim"
+
+export JBOSS="/opt/jboss/current/"
+export TRUNK="/home/mike/redteam/evaas/"
+
+export JBOSS_HOME=/opt/jboss/eap7
+
+
+alias undeploy="rm -rf $DEPLOYDSH"
+alias deploybuild="unzip -o $ARTIFACT -d $JBOSS"
+alias cleandeploy="undeploy&& cd $TRUNK && mvn clean install && deploybuild"
+alias dirtydeploy="undeploy&& cd $TRUNK && mvn install -DskipTests=true && deploybuild"
+alias bounce="jboss restart"
+export MAVEN_OPTS="-XX:MaxPermSize=512m -Xmx2g"
+
+#alias -g viewDirs="| grep '=\/' | grep -v wsdl | grep -v '^#' | grep -iv queue | perl -pe 's/^(.*?)=(.*?)$/$2/;'"
