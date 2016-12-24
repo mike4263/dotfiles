@@ -1,0 +1,3 @@
+TCPKeepAlive yes
+ServerAliveCountMax 36
+ServerAliveInterval 300
