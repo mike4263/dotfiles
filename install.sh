@@ -9,6 +9,8 @@ fi
 if [[ ! -e ~/.oh-my-zsh ]]; then 
   echo "Installing oh-my-zsh.."
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  rm -rf ~/.oh-my-zsh/custom
+  ln -s ~/dotfiles/zsh ~/.oh-my-zsh/custom
 fi
 
 if [[ ! -e ~/.zshrc ]]; then
