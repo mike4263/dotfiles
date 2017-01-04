@@ -27,7 +27,7 @@ function precmd {
     
     local promptsize=${#${(%):---(%n@%m)---()--}}
 
-    local GIT_PROMPT=$(git_prompt_info)
+    local GIT_PROMPT="$(git_prompt_info)"
     local zero='%([BSUbfksu]|([FK]|){*})'
     local gitsize=${#${(S%%)GIT_PROMPT//$~zero/}}
 

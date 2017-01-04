@@ -40,7 +40,7 @@ ZSH_THEME="phil"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(svn osx  mvn cp autojump copydir copyfile dircycle gnu-utils)
+plugins=(git svn osx  mvn cp autojump copydir copyfile dircycle gnu-utils)
 
 source $ZSH/oh-my-zsh.sh
 
