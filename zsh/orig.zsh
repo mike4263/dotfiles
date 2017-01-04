@@ -184,8 +184,8 @@ mesg y
 
 ### LS and V aliases
 #alias ls="ls $LS_OPTIONS" #--format=vertical
-alias ls="ls -G"
-alias v="ls -l"
+alias ls="ls --color -G"
+alias v="ls --color -l"
 alias vt="ls -lrt"
 alias LL="| less"
 #alias l="v"
