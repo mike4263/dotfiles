@@ -14,9 +14,6 @@ Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
 call vundle#end()
 
-
-
-"
 "  Install Vundle
 "  set ttymouse=xterm2
 " : Pressing F5 lists all buffer, just type number
@@ -103,12 +100,11 @@ autocmd FileType human set nonumber
 autocmd FileType perl set smartindent
 autocmd VimResized * :wincmd =
 autocmd VimResized * :wincmd = " automatically rebalance windows on vim resize
-autocmd vimenter * NERDTree
-autocmd vimenter * exe 2 . "wincmd w"
 cmap w!! w !sudo tee > /dev/null % <CR>
 colorscheme desert
 command! Bx :Bdelete
-command! Nt :NERDTree
+command! No :NERDTree
+command! Nc :NERDTreeClose
 filetype off
 filetype plugin indent on
 imap <C-h> <ESC><C-W>h
