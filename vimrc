@@ -14,9 +14,6 @@ Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
 call vundle#end()
 
-
-
-"
 "  Install Vundle
 "  set ttymouse=xterm2
 " : Pressing F5 lists all buffer, just type number
@@ -101,20 +98,13 @@ autocmd FileType css set smartindent
 autocmd FileType help set nonumber
 autocmd FileType human set nonumber
 autocmd FileType perl set smartindent
-autocmd User Rails silent! Rnavcommand decorator      app/decorators            -glob=**/* -suffix=_decorator.rb
-autocmd User Rails silent! Rnavcommand feature        features                  -glob=**/* -suffix=.feature
-autocmd User Rails silent! Rnavcommand job            app/jobs                  -glob=**/* -suffix=_job.rb
-autocmd User Rails silent! Rnavcommand mediator       app/mediators             -glob=**/* -suffix=_mediator.rb
-autocmd User Rails silent! Rnavcommand observer       app/observers             -glob=**/* -suffix=_observer.rb
-autocmd User Rails silent! Rnavcommand stepdefinition features/step_definitions -glob=**/* -suffix=_steps.rb
 autocmd VimResized * :wincmd =
 autocmd VimResized * :wincmd = " automatically rebalance windows on vim resize
-autocmd vimenter * NERDTree
-autocmd vimenter * exe 2 . "wincmd w"
 cmap w!! w !sudo tee > /dev/null % <CR>
 colorscheme desert
 command! Bx :Bdelete
-command! Nt :NERDTree
+command! No :NERDTree
+command! Nc :NERDTreeClose
 filetype off
 filetype plugin indent on
 imap <C-h> <ESC><C-W>h
