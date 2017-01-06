@@ -185,7 +185,7 @@ set browsedir=buffer
 set clipboard=unnamed                                        " yank and paste with the system clipboard
 set comments+=b:\"
 set comments+=b:\" " vim comments
-set cursorcolumn " cross hair mode
+" set cursorcolumn " cross hair mode
 set cursorline " cross hair mode
 set dir=~/.vimbkup/
 set directory-=.                                             " don't store swapfiles in the current directory
