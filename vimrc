@@ -143,11 +143,11 @@ map <leader>l :Align
 map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 map H ^
 map L $
-nmap <F2> :source ~/.vimrc<CR>
-nmap <F3> :e ~/.vimrc.local<CR>
 nmap <F8> :w !diff -w -B -C 5 -p - % >tmp.diff<CR>:sp tmp.diff<CR>
 nmap <F8> :w !diff -w -B -c5 -p - % >tmp.diff<CR>:sp tmp.diff<CR>
-nmap <leader><space> :call whitespace#strip_trailing()<CR>
+
+nmap <leader>ch :set cursorcolumn! cursorline!<CR>
+nmap <leader><space> :call whitespace#strip_trailing()<CR>iBROKEN
 nmap <leader>T :CommandTFlush<CR>:CommandT<CR>
 nmap <leader>] :TagbarToggle<CR>
 nmap <leader>a :Ack 
@@ -156,6 +156,11 @@ nmap <leader>c <Plug>Kwbd
 nmap <leader>d :NERDTreeToggle<CR>
 nmap <leader>f :NERDTreeFind<CR>
 nmap <leader>t :CommandT<CR>
+
+nmap <leader>vs :source ~/.vimrc<CR>
+nmap <leader>ve :e ~/.vimrc<CR>
+
+
 nmap ZQ :qa!<CR> " Sane ZZ & ZQ for windows
 nmap ZZ :wqa<CR> " Sane ZZ & ZQ for windows
 nnoremap <C-N> :next<CR>
