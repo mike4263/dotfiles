@@ -12,6 +12,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-dispatch'
 call vundle#end()
 
 "  Install Vundle
@@ -116,7 +117,6 @@ inoremap jj <ESC>
 let g:CommandTMaxHeight=20
 let g:NERDSpaceDelims=1
 let g:ackprg = 'ag --nogroup --column'
-let g:ackprg = 'ag --nogroup --column' " ZOMG the_silver_searcher is so much faster than ack"
 let g:gitgutter_enabled = 0
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -155,11 +155,8 @@ nmap <leader>b :CommandTBuffer<CR>
 nmap <leader>c <Plug>Kwbd
 nmap <leader>d :NERDTreeToggle<CR>
 nmap <leader>f :NERDTreeFind<CR>
-nmap <leader>g :ToggleGitGutter<CR>
 nmap <leader>t :CommandT<CR>
-nmap ZQ :qa!<CR>
 nmap ZQ :qa!<CR> " Sane ZZ & ZQ for windows
-nmap ZZ :wqa<CR>
 nmap ZZ :wqa<CR> " Sane ZZ & ZQ for windows
 nnoremap <C-N> :next<CR>
 nnoremap <C-P> :prev<CR>
@@ -174,19 +171,17 @@ noremap <C-l> <C-W>l
 noremap <C-y>  3<C-y>
 noremap <Space> <PageDown>
 noremap Y y$
-set ai
 set autoindent
 set autoread                                                 " reload files when changed on disk, i.e. via `git checkout`
 set backspace=2                                              " Fix broken backspace in some setups
-set backspace=indent,eol,start " this just started breaking
+set backspace=indent,eol,start							  	" this just started breaking
 set backupcopy=yes                                           " see :help crontab
 set backupdir=~/.vimbkup/
 set browsedir=buffer
 set clipboard=unnamed                                        " yank and paste with the system clipboard
-set comments+=b:\"
 set comments+=b:\" " vim comments
 " set cursorcolumn " cross hair mode
-set cursorline " cross hair mode
+" set cursorline " cross hair mode
 set dir=~/.vimbkup/
 set directory-=.                                             " don't store swapfiles in the current directory
 set encoding=utf-8
@@ -204,43 +199,32 @@ set modeline
 set modelines=5
 set mouse=a
 set nocompatible
-set nocursorline " don't highlight current line
 set noeb vb t_vb=
-set noexpandtab
-set nofoldenable
-set nohlsearch
 set nohlsearch "!!!!
 set nolist                                                     " show trailing whitespace
 set number                                                   " show line numbers
 set pastetoggle=<F10>           " pastetoggle (sane indentation on pastes)
-set rtp+=~/.vim/bundle/Vundle.vim
-set ruler                                                    " show where you are
+" set ruler                                                    " show where you are
 set scrolloff=3                                              " show context above/below cursorline
 set shiftround
 set shiftwidth=2                                             " normal mode indentation commands use 2 spaces
 set shortmess=atI " avoiding the "Hit enter to continue prompts"
 set showcmd
-set si
+set smartindent
 set smartcase
-set smartcase                                                " case-sensitive search if any caps
 set softtabstop=2                                            " insert mode tab and backspace use 2 spaces
 set statusline+=%#warningmsg#
-set statusline+=%*
-set tabstop=2                                                " actual tabs occupy 8 characters
 set ts=4
 set ttimeoutlen=10
 set ttyfast
 set ttymouse=xterm2
 "set tw=120 ts=4 sw=4 sta et sts=4 ai
-set tw=160
 set tw=250
 set viewoptions=folds,options,cursor,unix,slash " better unix / windows compatibility
 set virtualedit=onemore         " allow for cursor beyond last character
 set whichwrap=h,l,~,[,]
-set wildignore=*.orig,*.exe
-set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
+set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc,*.orig,*.exe
 set wildmenu                                                 " show a navigable menu for tab completion
-set wildmode=list:longest " list completion alternatives
 set wildmode=longest,list,full
 set wrap
 syntax enable
