@@ -24,8 +24,11 @@ function precmd {
     # Truncate the path if it's too long.
     PR_FILLBAR=""
     PR_PWDLEN=""
-    
-    local promptsize=${#${(%):---(%n@%m)---()--}}
+
+    DATELINE=%D{%H:%M:%S}
+    local promptsize=${#${(%):---()---($DATELINE)--}}
+
+    ERROR_PROMPT=%(?..$PR_WHITE:$PR_LIGHT_RED%{[%}%?%{]%})\
 
     local GIT_PROMPT="$(git_prompt_info)"
     local zero='%([BSUbfksu]|([FK]|){*})'
@@ -102,7 +105,7 @@ setprompt () {
 
     PROMPT='$PR_SET_CHARSET$PR_STITLE${(e)PR_TITLEBAR}\
 $PR_CYAN$PR_SHIFT_IN$PR_ULCORNER$PR_BLUE$PR_HBAR$PR_SHIFT_OUT<\
-${(e)PR_APM}$PR_YELLOW%D{%H:%M:%S}\
+${(e)PR_APM}$PR_YELLOW$DATELINE\
 $PR_BLUE>$PR_SHIFT_IN$PR_HBAR$PR_CYAN$PR_HBAR${(e)PR_FILLBAR}$PR_BLUE$PR_HBAR$PR_SHIFT_OUT< \
 $PR_MAGENTA%$PR_PWDLEN<...<%~%<< $(git_prompt_info)\
 $PR_BLUE>$PR_SHIFT_IN$PR_SHIFT_OUT\
@@ -110,7 +113,7 @@ $PR_BLUE>$PR_SHIFT_IN$PR_SHIFT_OUT\
 $PR_CYAN$PR_SHIFT_IN$PR_LLCORNER$PR_BLUE$PR_HBAR$PR_SHIFT_OUT%{[%}\
 $PR_GREEN%(!.%SROOT%s.%n)$PR_GREEN@%m\
 $PR_LIGHT_BLUE$PR_SHIFT_IN%{]%}$PR_SHIFT_OUT\
-%(?..$PR_WHITE:$PR_LIGHT_RED%{[%}%?%{]%})\
+$ERROR_PROMPT\
 $PR_LIGHT_BLUE%(!.$PR_RED.$PR_BLUE) %# $PR_NO_COLOUR'
 
 
