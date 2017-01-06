@@ -152,6 +152,8 @@ nmap <leader>T :CommandTFlush<CR>:CommandT<CR>
 nmap <leader>] :TagbarToggle<CR>
 nmap <leader>a :Ack 
 nmap <leader>b :CommandTBuffer<CR>
+
+nmap <leader>bd :Bdelete
 nmap <leader>c <Plug>Kwbd
 nmap <leader>d :NERDTreeToggle<CR>
 nmap <leader>f :NERDTreeFind<CR>
@@ -175,12 +177,15 @@ nmap <leader>gpl :Dispatch! git pull<CR>
 
 nmap <leader>t :CommandT<CR>
 
+" these are the commands to edit vim and other dotfiles
 nmap <leader>vs :source ~/.vimrc<CR>
 nmap <leader>ve :e ~/.vimrc<CR>
+nmap <leader>vz :e ~/dotfiles/zsh/zsh.orig<CR>
 
+nmap ZQ :qa!<CR>
+nmap ZZ :wqa<CR>
+nmap <leader>zz :wq<CR> 
 
-nmap ZQ :qa!<CR> " Sane ZZ & ZQ for windows
-nmap ZZ :wqa<CR> " Sane ZZ & ZQ for windows
 nnoremap <C-N> :next<CR>
 nnoremap <C-P> :prev<CR>
 nnoremap <F1> :help<Space>
@@ -194,6 +199,7 @@ noremap <C-l> <C-W>l
 noremap <C-y>  3<C-y>
 noremap <Space> <PageDown>
 noremap Y y$
+
 set autoindent
 set autoread                                                 " reload files when changed on disk, i.e. via `git checkout`
 set backspace=2                                              " Fix broken backspace in some setups
