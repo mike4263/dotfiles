@@ -18,6 +18,10 @@ if [[ ! -e ~/.zshrc ]]; then
   ln -s ~/dotfiles/zshrc ~/.zshrc
 fi
 
+if [[ ! -e ~/.tmux.conf ]]; then
+  echo "Installing linking tmux"
+  ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
+fi
 
 if [[ ! -e ~/.vimrc ]]; then
   echo "Linking vim config.."
