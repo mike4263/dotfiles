@@ -248,7 +248,7 @@ set showcmd
 set smartindent
 set smartcase
 set softtabstop=2                                            " insert mode tab and backspace use 2 spaces
-set statusline+=%#warningmsg#
+" set statusline+=%#warningmsg#
 set ts=4
 set ttimeoutlen=10
 set ttyfast
