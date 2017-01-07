@@ -127,7 +127,6 @@ let g:syntastic_loc_list_height = 1
 let g:syntastic_python_checker = 'pyflakes'
 let mapleader = ','
 let python_highlight_all = 1
-map   <F5> :mks!<CR><c-s><F11>
 map <A-Down> dd p
 map <A-Up> dd <up>P
 map <A-c> "+y
@@ -137,10 +136,7 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
-map <F11> :!git commit -a -m '
-map <F12> :!git commit % -m '
 map <leader>l :Align
-map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 map H ^
 map L $
 nmap <F8> :w !diff -w -B -C 5 -p - % >tmp.diff<CR>:sp tmp.diff<CR>
@@ -153,7 +149,7 @@ nmap <leader>] :TagbarToggle<CR>
 nmap <leader>a :Ack 
 nmap <leader>b :CommandTBuffer<CR>
 
-nmap <leader>bd :Bdelete
+nmap <leader>bd :Bdelete<CR>
 nmap <leader>c <Plug>Kwbd
 nmap <leader>d :NERDTreeToggle<CR>
 nmap <leader>f :NERDTreeFind<CR>
@@ -174,13 +170,23 @@ nmap <leader>gb :Git branch<Space>
 nmap <leader>go :Git checkout<Space>
 nmap <leader>gps :Dispatch! git push<CR>
 nmap <leader>gpl :Dispatch! git pull<CR>
+nmap <leader>mci :Dispatch! mvn clean install -DskipTests=true<CR>
 
+nmap <leader>q :q
 nmap <leader>t :CommandT<CR>
+
+" window management
+
+nmap <leader>wc <c-w>c
+nmap <leader>wj 10<c-w>-
+nmap <leader>wk 10<c-w>+
+nmap <leader>wn <c-w>n
 
 " these are the commands to edit vim and other dotfiles
 nmap <leader>vs :source ~/.vimrc<CR>
 nmap <leader>ve :e ~/.vimrc<CR>
-nmap <leader>vz :e ~/dotfiles/zsh/zsh.orig<CR>
+nmap <leader>vt :e ~/dotfiles/tmux.conf<CR>
+nmap <leader>vz :e ~/dotfiles/zsh/orig.zsh<CR>
 
 nmap ZQ :qa!<CR>
 nmap ZZ :wqa<CR>
@@ -189,7 +195,6 @@ nmap <leader>zz :wq<CR>
 nnoremap <C-N> :next<CR>
 nnoremap <C-P> :prev<CR>
 nnoremap <F1> :help<Space>
-nnoremap <Leader>q :Bdelete<CR>
 noremap <BS> <PageUp>
 noremap <C-e>  3<C-e>
 noremap <C-h> <C-W>h
@@ -200,10 +205,10 @@ noremap <C-y>  3<C-y>
 noremap <Space> <PageDown>
 noremap Y y$
 
+" VIM OPTIONS 
 set autoindent
 set autoread                                                 " reload files when changed on disk, i.e. via `git checkout`
-set backspace=2                                              " Fix broken backspace in some setups
-set backspace=indent,eol,start							  	" this just started breaking
+set backspace=indent,eol,start							  	
 set backupcopy=yes                                           " see :help crontab
 set backupdir=~/.vimbkup/
 set browsedir=buffer
@@ -233,7 +238,7 @@ set nohlsearch "!!!!
 set nolist                                                     " show trailing whitespace
 set number                                                   " show line numbers
 set pastetoggle=<F10>           " pastetoggle (sane indentation on pastes)
-" set ruler                                                    " show where you are
+set ruler                                                    " show where you are
 set scrolloff=3                                              " show context above/below cursorline
 set shiftround
 set shiftwidth=2                                             " normal mode indentation commands use 2 spaces
