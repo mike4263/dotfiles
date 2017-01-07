@@ -13,6 +13,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-dispatch'
+Plugin 'wincent/command-t'
 call vundle#end()
 
 "  Install Vundle
