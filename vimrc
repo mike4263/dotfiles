@@ -1,3 +1,6 @@
+"  TODO:
+" - Incorporate vim angular 2 dev env : http://www.blog.bdauria.com/?p=692 
+"
 "  Install Vundle
 "git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -14,6 +17,12 @@ Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-dispatch'
 Plugin 'wincent/command-t'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'Quramy/vim-js-pretty-template'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'valloric/YouCompleteMe'
+Plugin 'jiangmiao/auto-pairs'
+"Plugin 'bdauria/angular-cli'
 call vundle#end()
 
 "  Install Vundle
