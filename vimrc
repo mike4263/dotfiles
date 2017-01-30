@@ -19,10 +19,11 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'wincent/command-t'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'Quramy/vim-js-pretty-template'
+Plugin 'Quaramy/tsuquyomi'
 Plugin 'Shougo/vimproc.vim'
-Plugin 'valloric/YouCompleteMe'
+"Plugin 'valloric/YouCompleteMe'
 Plugin 'jiangmiao/auto-pairs'
-"Plugin 'bdauria/angular-cli'
+Plugin 'bdauria/angular-cli'
 call vundle#end()
 
 "  Install Vundle
@@ -273,3 +274,15 @@ set wildmode=longest,list,full
 set wrap
 syntax enable
 syntax on
+
+
+" angular 2 stuff
+let g:typescript_compiler_binary = 'tsc'
+let g:typescript_compiler_options = ''
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
+
+autocmd FileType typescript JsPreTmpl html
+autocmd FileType typescript syn clear foldBraces
+
+
