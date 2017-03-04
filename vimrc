@@ -90,6 +90,7 @@ call vundle#end()
 "source ~/.vim/vundle_plugin.vim
 "syntax on
 autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
+autocmd BufRead,BufNewFile Jenkinsfile set filetype=groovy
 autocmd BufRead,BufNewFile *.fdoc set filetype=yaml " fdoc is yaml
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 autocmd BufRead,BufNewFile *.md set filetype=markdown " md is markdown
