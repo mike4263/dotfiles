@@ -14,6 +14,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-dispatch'
 Plugin 'wincent/command-t'
+Plugin 'bronson/vim-trailing-whitespace'
 call vundle#end()
 
 "  Install Vundle
@@ -145,11 +146,12 @@ nmap <F8> :w !diff -w -B -C 5 -p - % >tmp.diff<CR>:sp tmp.diff<CR>
 nmap <F8> :w !diff -w -B -c5 -p - % >tmp.diff<CR>:sp tmp.diff<CR>
 
 nmap <leader>ch :set cursorcolumn! cursorline!<CR>
-nmap <leader><space> :call whitespace#strip_trailing()<CR>iBROKEN
 nmap <leader>T :CommandTFlush<CR>:CommandT<CR>
 nmap <leader>] :TagbarToggle<CR>
-nmap <leader>a :Ack 
+nmap <leader>a :Ack
 nmap <leader>b :CommandTBuffer<CR>
+
+
 
 nmap <leader>bd :Bdelete<CR>
 nmap <leader>c <Plug>Kwbd
@@ -183,6 +185,8 @@ nmap <leader>wc <c-w>c
 nmap <leader>wj 10<c-w>-
 nmap <leader>wk 10<c-w>+
 nmap <leader>wn <c-w>n
+
+nmap <leader>w :FixWhitespace<CR>
 
 " these are the commands to edit vim and other dotfiles
 nmap <leader>vs :source ~/.vimrc<CR>
