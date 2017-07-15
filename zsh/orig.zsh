@@ -556,6 +556,8 @@ JDK8="/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home/jre/bin/ja
 
 alias gs='git status'
 
+# git  purege
+alias git-purge="git remote prune origin &&  git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -d"
 
 echo
 echo
