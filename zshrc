@@ -44,13 +44,3 @@ plugins=(git svn osx  mvn cp autojump copydir copyfile dircycle gnu-utils)
 
 source $ZSH/oh-my-zsh.sh
 
-# Customize to your needs...
-
-alias startJBoss="/opt/jboss/current/bin/standalone.sh --debug 8787"
-export HOMEBREW_GITHUB_API_TOKEN=b5cd6145357ca12579dbfa0d4d36af6a5ce10810
-
-alias purgeProject="oc delete rc,dc,bc,pod,route,services,builds,imagestreams --all"
-
-#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-export PATH=${PATH}:~/dotfiles/bin

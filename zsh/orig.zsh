@@ -509,7 +509,13 @@ function rbg() {
     nohup $* 2>&1 > /dev/null &
 }
 
-alias vm="mv" 
+#alias vm="mv" 
+alias vm="sudo virsh"
+alias vml="sudo virsh list"
+alias vmc="sudo virsh console"
+
+
+
 alias cap="ru"
 alias find='find .'
 
@@ -559,10 +565,13 @@ alias gs='git status'
 # git  purege
 alias git-purge="git remote prune origin &&  git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -d"
 
+
+alias ap=ansible-playbook
+
 echo
 echo
 fortune
-echo 
+echo
 echo
 
 
