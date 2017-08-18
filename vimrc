@@ -78,7 +78,7 @@ call vundle#end()
 "set listchars=tab:▸\ ,trail:▫
 "set noexpandtab
 "set shiftround
-"set shiftwidth=4
+set shiftwidth=2
 "set statusline+=%#warningmsg#
 "set statusline+=%*
 "set statusline+=%{SyntasticStatuslineFlag()}
@@ -104,7 +104,7 @@ autocmd FileType human set nonumber
 autocmd FileType perl set smartindent
 autocmd VimResized * :wincmd =
 autocmd VimResized * :wincmd = " automatically rebalance windows on vim resize
-cmap w!! w !sudo tee > /dev/null % <CR>
+cmap w!! w !sudo tee > /dev/null % <CR> :e!<CR>
 colorscheme desert
 command! Bx :Bdelete
 command! No :NERDTree
@@ -218,7 +218,7 @@ set backspace=indent,eol,start
 set backupcopy=yes                                           " see :help crontab
 set backupdir=~/.vimbkup/
 set browsedir=buffer
-set clipboard=unnamed                                        " yank and paste with the system clipboard
+set clipboard=unnamed,autoselect                                        " yank and paste with the system clipboard
 set comments+=b:\" " vim comments
 " set cursorcolumn " cross hair mode
 " set cursorline " cross hair mode
@@ -237,8 +237,9 @@ set linebreak
 set matchpairs+=<:>
 set modeline
 set modelines=5
-set mouse=a
+set mouse=vi
 set nocompatible
+set nospell
 set noeb vb t_vb=
 set nohlsearch "!!!!
 set nolist                                                     " show trailing whitespace
@@ -251,10 +252,11 @@ set shiftwidth=2                                             " normal mode inden
 set shortmess=atI " avoiding the "Hit enter to continue prompts"
 set showcmd
 set smartindent
+set smarttab
 set smartcase
 set softtabstop=2                                            " insert mode tab and backspace use 2 spaces
 " set statusline+=%#warningmsg#
-set ts=4
+set ts=2
 set ttimeoutlen=10
 set ttyfast
 set ttymouse=xterm2
@@ -269,3 +271,4 @@ set wildmode=longest,list,full
 set wrap
 syntax enable
 syntax on
+map <C-E> <C-W>
