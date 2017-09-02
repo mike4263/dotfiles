@@ -13,7 +13,7 @@ Plugin 'mileszs/ack.vim'
 Plugin 'moll/vim-bbye'
 Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
+"Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-dispatch'
 Plugin 'wincent/command-t'
@@ -24,6 +24,7 @@ Plugin 'Shougo/vimproc.vim'
 "Plugin 'valloric/YouCompleteMe'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'bdauria/angular-cli'
+Plugin 'bronson/vim-trailing-whitespace'
 call vundle#end()
 
 "  Install Vundle
@@ -87,7 +88,7 @@ call vundle#end()
 "set listchars=tab:▸\ ,trail:▫
 "set noexpandtab
 "set shiftround
-"set shiftwidth=4
+set shiftwidth=2
 "set statusline+=%#warningmsg#
 "set statusline+=%*
 "set statusline+=%{SyntasticStatuslineFlag()}
@@ -100,6 +101,7 @@ call vundle#end()
 "source ~/.vim/vundle_plugin.vim
 "syntax on
 autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
+autocmd BufRead,BufNewFile Jenkinsfile set filetype=groovy
 autocmd BufRead,BufNewFile *.fdoc set filetype=yaml " fdoc is yaml
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 autocmd BufRead,BufNewFile *.md set filetype=markdown " md is markdown
@@ -112,7 +114,7 @@ autocmd FileType human set nonumber
 autocmd FileType perl set smartindent
 autocmd VimResized * :wincmd =
 autocmd VimResized * :wincmd = " automatically rebalance windows on vim resize
-cmap w!! w !sudo tee > /dev/null % <CR>
+cmap w!! w !sudo tee > /dev/null % <CR> :e!<CR>
 colorscheme desert
 command! Bx :Bdelete
 command! No :NERDTree
@@ -154,11 +156,12 @@ nmap <F8> :w !diff -w -B -C 5 -p - % >tmp.diff<CR>:sp tmp.diff<CR>
 nmap <F8> :w !diff -w -B -c5 -p - % >tmp.diff<CR>:sp tmp.diff<CR>
 
 nmap <leader>ch :set cursorcolumn! cursorline!<CR>
-nmap <leader><space> :call whitespace#strip_trailing()<CR>iBROKEN
 nmap <leader>T :CommandTFlush<CR>:CommandT<CR>
 nmap <leader>] :TagbarToggle<CR>
-nmap <leader>a :Ack 
+nmap <leader>a :Ack
 nmap <leader>b :CommandTBuffer<CR>
+
+
 
 nmap <leader>bd :Bdelete<CR>
 nmap <leader>c <Plug>Kwbd
@@ -193,6 +196,8 @@ nmap <leader>wj 10<c-w>-
 nmap <leader>wk 10<c-w>+
 nmap <leader>wn <c-w>n
 
+nmap <leader>w :FixWhitespace<CR>
+
 " these are the commands to edit vim and other dotfiles
 nmap <leader>vs :source ~/.vimrc<CR>
 nmap <leader>ve :e ~/.vimrc<CR>
@@ -223,7 +228,7 @@ set backspace=indent,eol,start
 set backupcopy=yes                                           " see :help crontab
 set backupdir=~/.vimbkup/
 set browsedir=buffer
-set clipboard=unnamed                                        " yank and paste with the system clipboard
+set clipboard=unnamed,autoselect                                        " yank and paste with the system clipboard
 set comments+=b:\" " vim comments
 " set cursorcolumn " cross hair mode
 " set cursorline " cross hair mode
@@ -242,8 +247,9 @@ set linebreak
 set matchpairs+=<:>
 set modeline
 set modelines=5
-set mouse=a
+set mouse=vi
 set nocompatible
+set nospell
 set noeb vb t_vb=
 set nohlsearch "!!!!
 set nolist                                                     " show trailing whitespace
@@ -256,10 +262,11 @@ set shiftwidth=2                                             " normal mode inden
 set shortmess=atI " avoiding the "Hit enter to continue prompts"
 set showcmd
 set smartindent
+set smarttab
 set smartcase
 set softtabstop=2                                            " insert mode tab and backspace use 2 spaces
 " set statusline+=%#warningmsg#
-set ts=4
+set ts=2
 set ttimeoutlen=10
 set ttyfast
 set ttymouse=xterm2
@@ -275,7 +282,6 @@ set wrap
 syntax enable
 syntax on
 
-
 " angular 2 stuff
 let g:typescript_compiler_binary = 'tsc'
 let g:typescript_compiler_options = ''
@@ -285,4 +291,5 @@ autocmd QuickFixCmdPost    l* nested lwindow
 autocmd FileType typescript JsPreTmpl html
 autocmd FileType typescript syn clear foldBraces
 
+map <C-E> <C-W>
 
