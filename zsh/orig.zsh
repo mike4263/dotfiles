@@ -568,6 +568,10 @@ alias git-purge="git remote prune origin &&  git branch -r | awk '{print $1}' | 
 
 alias ap=ansible-playbook
 
+
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+
 echo
 echo
 fortune
