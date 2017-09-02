@@ -1,3 +1,6 @@
+"  TODO:
+" - Incorporate vim angular 2 dev env : http://www.blog.bdauria.com/?p=692 
+"
 "  Install Vundle
 "git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -14,6 +17,13 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-dispatch'
 Plugin 'wincent/command-t'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'Quramy/vim-js-pretty-template'
+Plugin 'Quaramy/tsuquyomi'
+Plugin 'Shougo/vimproc.vim'
+"Plugin 'valloric/YouCompleteMe'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'bdauria/angular-cli'
 Plugin 'bronson/vim-trailing-whitespace'
 call vundle#end()
 
@@ -271,4 +281,15 @@ set wildmode=longest,list,full
 set wrap
 syntax enable
 syntax on
+
+" angular 2 stuff
+let g:typescript_compiler_binary = 'tsc'
+let g:typescript_compiler_options = ''
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
+
+autocmd FileType typescript JsPreTmpl html
+autocmd FileType typescript syn clear foldBraces
+
 map <C-E> <C-W>
+

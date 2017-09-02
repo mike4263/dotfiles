@@ -468,7 +468,7 @@ function swap() {
 }
 
 
-export XDG_CONFIG_HOME=/home/mike
+#export XDG_CONFIG_HOME=/home/mike
 
 #alias -g CA="2>&1 | cat -A"
 #alias -g W='| wc -l'
