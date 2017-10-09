@@ -25,6 +25,9 @@ Plugin 'Shougo/vimproc.vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'bdauria/angular-cli'
 Plugin 'bronson/vim-trailing-whitespace'
+"Plugin 'Quramy/vim-js-pretty-template'
+Plugin 'jason0x43/vim-js-indent'
+
 call vundle#end()
 
 "  Install Vundle
@@ -185,6 +188,9 @@ nmap <leader>go :Git checkout<Space>
 nmap <leader>gps :Dispatch! git push<CR>
 nmap <leader>gpl :Dispatch! git pull<CR>
 nmap <leader>mci :Dispatch! mvn clean install -DskipTests=true<CR>
+nmap <leader>mn :set mouse=a nu<CR>
+nmap <leader>mj :set mouse= nonu<CR>
+
 
 nmap <leader>q :q
 nmap <leader>t :CommandT<CR>

@@ -334,7 +334,7 @@ function mvcd () {
 }
 
 function smdc () {
-	sudo mkdir "$1" && sudo chown mike:staff "$1" && cd "$1"
+	sudo mkdir "$1" && sudo chown `whoami`:`id -g` "$1" && cd "$1"
 }
 
 alias md=mkdir -p
