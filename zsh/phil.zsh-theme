@@ -40,7 +40,7 @@ function precmd {
     if [[ "$promptsize + $pwdsize + $gitsize + 2" -gt $TERMWIDTH ]]; then
 	    ((PR_PWDLEN=$TERMWIDTH - $promptsize))
     else
-	PR_FILLBAR="\${(l.(($TERMWIDTH - ($promptsize + $pwdsize + $gitsize)))..${PR_HBAR}.)}"
+	PR_FILLBAR="\${(l.(($TERMWIDTH - ($promptsize + $pwdsize + $gitsize)))..─.)}"
     fi
     #show_mode 'CMD'
     #(sleep 1 ; show_mode "INSERT") &!
@@ -113,7 +113,7 @@ $PR_BLUE>$PR_SHIFT_IN$PR_SHIFT_OUT\
 $PR_CYAN$PR_SHIFT_IN$PR_LLCORNER$PR_BLUE$PR_HBAR$PR_SHIFT_OUT%{[%}\
 $PR_GREEN%(!.%SROOT%s.%n)$PR_GREEN@%m\
 $PR_LIGHT_BLUE$PR_SHIFT_IN%{]%}$PR_SHIFT_OUT\
-$ERROR_PROMPT\
+#$ERROR_PROMPT\
 $PR_LIGHT_BLUE%(!.$PR_RED.$PR_BLUE) %# $PR_NO_COLOUR'
 
 
