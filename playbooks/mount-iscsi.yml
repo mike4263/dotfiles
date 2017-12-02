@@ -1,0 +1,11 @@
+---
+- name: mount block01
+  hosts: localhost
+
+  tasks:
+
+    - mount: 
+        name: /mnt/block01
+        fstype: xfs
+        src: /dev/sdb
+        state: mounted
