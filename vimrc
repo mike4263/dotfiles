@@ -1,5 +1,5 @@
 "  TODO:
-" - Incorporate vim angular 2 dev env : http://www.blog.bdauria.com/?p=692 
+" - Incorporate vim angular 2 dev env : http://www.blog.bdauria.com/?p=692
 "
 "  Install Vundle
 "git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -15,58 +15,36 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/nerdtree'
 "Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-dispatch'
 Plugin 'wincent/command-t'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'Quramy/vim-js-pretty-template'
-Plugin 'Quaramy/tsuquyomi'
+"Plugin 'Quaramy/tsuquyomi'
 Plugin 'Shougo/vimproc.vim'
 "Plugin 'valloric/YouCompleteMe'
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'bdauria/angular-cli'
+"Plugin 'bdauria/angular-cli'
 Plugin 'bronson/vim-trailing-whitespace'
 "Plugin 'Quramy/vim-js-pretty-template'
 Plugin 'jason0x43/vim-js-indent'
 
 call vundle#end()
 
-"  Install Vundle
-"  set ttymouse=xterm2
-" : Pressing F5 lists all buffer, just type number
-" Make <F8> diff the current buffer with it's file on disk.
-" Sane ZZ & ZQ for windows
 " TMUX maddness
 " ZOMG the_silver_searcher is so much faster than ack"
 " automatically rebalance windows on vim resize
-" avoiding the "Hit enter to continue prompts"
 " don't bother with vi compatibility
-" eliminate trailing whitespace
-" enable syntax highlighting
-" extra rails.vim help
 " fdoc is yaml
 " gui settings
-" its 2016
 " keyboard shortcuts
 " keystrokes - moving around
-" mapping copy, paste, cut to alt
-" md is markdown
-" move to automatically format c++ code...
-" plugin settings
-" setup plugins
-" text formating
-" these were in my AFS VM, odd cursor behavior
 " ugh, read the docs for this line
 " use <Ctrl>+N/<Ctrl>+P to cycle through files:
 " vim comments
 " word wrapping
-" ¿ why is the upside down question mark so awesome?
 ":%s/$/, /
 "Plugin 'christoomey/vim-tmux-navigator'
-"au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
-"au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
-"au VimEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
-"au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
-"colorscheme elflord
 "endif
 "git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 "if exists('$TMUX')  " Support resizing in tmux
@@ -119,9 +97,8 @@ autocmd VimResized * :wincmd =
 autocmd VimResized * :wincmd = " automatically rebalance windows on vim resize
 cmap w!! w !sudo tee > /dev/null % <CR> :e!<CR>
 colorscheme desert
+"colorscheme elflord
 command! Bx :Bdelete
-command! No :NERDTree
-command! Nc :NERDTreeClose
 filetype off
 filetype plugin indent on
 imap <C-h> <ESC><C-W>h
@@ -152,10 +129,8 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
-map <leader>l :Align
 map H ^
 map L $
-nmap <F8> :w !diff -w -B -C 5 -p - % >tmp.diff<CR>:sp tmp.diff<CR>
 nmap <F8> :w !diff -w -B -c5 -p - % >tmp.diff<CR>:sp tmp.diff<CR>
 
 nmap <leader>ch :set cursorcolumn! cursorline!<CR>
@@ -164,7 +139,10 @@ nmap <leader>] :TagbarToggle<CR>
 nmap <leader>a :Ack
 nmap <leader>b :CommandTBuffer<CR>
 
-
+" lets have sane C+P for once!! 12/13/17
+nmap <leader>cv "+p
+nmap <leader>cc "+y
+vmap C "+y
 
 nmap <leader>bd :Bdelete<CR>
 nmap <leader>c <Plug>Kwbd
@@ -172,11 +150,14 @@ nmap <leader>d :NERDTreeToggle<CR>
 nmap <leader>f :NERDTreeFind<CR>
 
 " fugitive git bindings
-nmap <leader>ga :Git add %:p<CR><CR>
+nmap <leader>gd :Gdiff<CR>
+
+nmap <leader>ga :diffget //2<CR><CR>
+nmap <leader>gb :diffget //3<CR><CR>
+
 nmap <leader>gs :Gstatus<CR>
 nmap <leader>gc :Gcommit -v -q<CR>
 nmap <leader>gt :Gcommit -v -q %:p<CR>
-nmap <leader>gd :Gdiff<CR>
 nmap <leader>ge :Gedit<CR>
 nmap <leader>gr :Gread<CR>
 nmap <leader>gw :Gwrite<CR><CR>
@@ -191,9 +172,10 @@ nmap <leader>mci :Dispatch! mvn clean install -DskipTests=true<CR>
 nmap <leader>mn :set mouse=a nu<CR>
 nmap <leader>mj :set mouse= nonu<CR>
 
+nmap <leader>ch :set cursorcolumn! cursorline!<CR> 
+"set cursorline " cross hair mode
 
 nmap <leader>q :q
-nmap <leader>t :CommandT<CR>
 
 " window management
 
@@ -202,7 +184,7 @@ nmap <leader>wj 10<c-w>-
 nmap <leader>wk 10<c-w>+
 nmap <leader>wn <c-w>n
 
-nmap <leader>w :FixWhitespace<CR>
+nmap <leader>ww :FixWhitespace<CR>
 
 " these are the commands to edit vim and other dotfiles
 nmap <leader>vs :source ~/.vimrc<CR>
@@ -212,7 +194,7 @@ nmap <leader>vz :e ~/dotfiles/zsh/orig.zsh<CR>
 
 nmap ZQ :qa!<CR>
 nmap ZZ :wqa<CR>
-nmap <leader>zz :wq<CR> 
+nmap <leader>zz :wq<CR>
 
 nnoremap <C-N> :next<CR>
 nnoremap <C-P> :prev<CR>
@@ -227,23 +209,22 @@ noremap <C-y>  3<C-y>
 noremap <Space> <PageDown>
 noremap Y y$
 
-" VIM OPTIONS 
+" VIM OPTIONS
 set autoindent
 set autoread                                                 " reload files when changed on disk, i.e. via `git checkout`
-set backspace=indent,eol,start							  	
+set backspace=indent,eol,start
 set backupcopy=yes                                           " see :help crontab
 set backupdir=~/.vimbkup/
 set browsedir=buffer
-set clipboard=unnamed,autoselect                                        " yank and paste with the system clipboard
+set clipboard=unnamed,autoselect                             " yank and paste with the system clipboard
 set comments+=b:\" " vim comments
-" set cursorcolumn " cross hair mode
-" set cursorline " cross hair mode
 set dir=~/.vimbkup/
 set directory-=.                                             " don't store swapfiles in the current directory
 set encoding=utf-8
 set expandtab!                                                " expand tabs to spaces
 set formatoptions=crnt " move to automatically format c++ code...
-set guifont=Monaco:h16
+"set guifont=Monaco:h16
+set guifont=Liberation\ Mono\ 16
 set history=1000
 set ignorecase                                               " case-insensitive search
 set incsearch                                                " search as you type
