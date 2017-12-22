@@ -17,7 +17,9 @@ ZSH_THEME_GIT_PROMPT_CLEAN=" %{$fg_bold[green]%}✔ "
 ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg_bold[red]%}✗ "
 
 
+
 function precmd {
+		local rc=$(echo $?)
 
     local TERMWIDTH
     (( TERMWIDTH = ${COLUMNS} - 1 ))
@@ -34,13 +36,19 @@ function precmd {
     local zero='%([BSUbfksu]|([FK]|){*})'
     local gitsize=${#${(S%%)GIT_PROMPT//$~zero/}}
 
+		local errorsize=0
+
     local pwdsize=${#${(%):-%~}}
 
-    
-    if [[ "$promptsize + $pwdsize + $gitsize + 2" -gt $TERMWIDTH ]]; then
+		if [[ "$rc" != 0 ]] ; then
+			errorsize=${#${(S%%)rc//$~zero/}};
+			(( errorsize=errorsize + 3 ))
+		fi
+
+    if [[ "$promptsize + $errorsize + $pwdsize + $gitsize + 2" -gt $TERMWIDTH ]]; then
 	    ((PR_PWDLEN=$TERMWIDTH - $promptsize))
     else
-	PR_FILLBAR="\${(l.(($TERMWIDTH - ($promptsize + $pwdsize + $gitsize)))..─.)}"
+			PR_FILLBAR="\${(l.(($TERMWIDTH - ($promptsize + $pwdsize + $gitsize)))..─.)}"
     fi
     #show_mode 'CMD'
     #(sleep 1 ; show_mode "INSERT") &!
