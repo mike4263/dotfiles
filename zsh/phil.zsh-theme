@@ -28,9 +28,16 @@ function precmd {
     PR_PWDLEN=""
 
     DATELINE=%D{%H:%M:%S}
-    local promptsize=${#${(%):---()---($DATELINE)--}}
+    local promptsize=${#${(%):-()---($DATELINE)--}}
+    local numberofjobs=$#jobstates
 
-    ERROR_PROMPT=%(?..$PR_WHITE:$PR_LIGHT_RED%{[%}%?%{]%})\
+    #ERROR_PROMPT=%(?..$PR_WHITE:$PR_LIGHT_RED%{[%}%?%{]%})\
+    ERROR_PROMPT=%(?..${PR_RED}\[%?\]${PR_WHITE})
+    #ERROR_PROMPT=%(?..%{[%}%?%{]%})\
+    JOB_COUNT=''
+		if [[ "$numberofjobs" != 0 ]] ; then
+      JOB_COUNT=${PR_GREEN}\[${numberofjobs}\]${PR_WHITE}
+    fi
 
     local GIT_PROMPT="$(git_prompt_info)"
     local zero='%([BSUbfksu]|([FK]|){*})'
@@ -42,11 +49,11 @@ function precmd {
 
 		if [[ "$rc" != 0 ]] ; then
 			errorsize=${#${(S%%)rc//$~zero/}};
-			(( errorsize=errorsize + 3 ))
+			(( errorsize=errorsize -3  ))
 		fi
 
-    if [[ "$promptsize + $errorsize + $pwdsize + $gitsize + 2" -gt $TERMWIDTH ]]; then
-	    ((PR_PWDLEN=$TERMWIDTH - $promptsize))
+    if [[ "$promptsize + $pwdsize + $gitsize + 2" -gt $TERMWIDTH ]]; then
+	    ((PR_PWDLEN=$TERMWIDTH - $promptsize ))
     else
 			PR_FILLBAR="\${(l.(($TERMWIDTH - ($promptsize + $pwdsize + $gitsize)))..─.)}"
     fi
@@ -112,24 +119,19 @@ setprompt () {
     # Finally, the prompt.
 
     PROMPT='$PR_SET_CHARSET$PR_STITLE${(e)PR_TITLEBAR}\
-$PR_CYAN$PR_SHIFT_IN$PR_ULCORNER$PR_BLUE$PR_HBAR$PR_SHIFT_OUT<\
+$PR_CYAN$PR_SHIFT_IN$PR_BLUE${PR_SHIFT_OUT}[\
 ${(e)PR_APM}$PR_YELLOW$DATELINE\
 $PR_BLUE>$PR_SHIFT_IN$PR_HBAR$PR_CYAN$PR_HBAR${(e)PR_FILLBAR}$PR_BLUE$PR_HBAR$PR_SHIFT_OUT< \
 $PR_MAGENTA%$PR_PWDLEN<...<%~%<< $(git_prompt_info)\
-$PR_BLUE>$PR_SHIFT_IN$PR_SHIFT_OUT\
-
-$PR_CYAN$PR_SHIFT_IN$PR_LLCORNER$PR_BLUE$PR_HBAR$PR_SHIFT_OUT%{[%}\
-$PR_GREEN%(!.%SROOT%s.%n)$PR_GREEN@%m\
-$PR_LIGHT_BLUE$PR_SHIFT_IN%{]%}$PR_SHIFT_OUT\
-#$ERROR_PROMPT\
-$PR_LIGHT_BLUE%(!.$PR_RED.$PR_BLUE) %# $PR_NO_COLOUR'
-
-
+$PR_BLUE> \
+[$PR_LIGHT_GREEN%n@%m$PR_BLUE] \$ $PR_NO_COLOUR'
 
     PS2='$PR_CYAN$PR_SHIFT_IN$PR_HBAR$PR_SHIFT_OUT\
 $PR_BLUE$PR_SHIFT_IN$PR_HBAR$PR_SHIFT_OUT(\
 $PR_LIGHT_GREEN%_$PR_BLUE)$PR_SHIFT_IN$PR_HBAR$PR_SHIFT_OUT\
 $PR_CYAN$PR_SHIFT_IN$PR_HBAR$PR_SHIFT_OUT$PR_NO_COLOUR '
+
+RPROMPT='${ERROR_PROMPT}${JOB_COUNT}$PR_NO_COLOUR'
 }
 
 setprompt
