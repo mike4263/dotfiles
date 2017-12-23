@@ -143,9 +143,11 @@ nmap <leader>b :CommandTBuffer<CR>
 nmap <leader>cv "+p
 nmap <leader>cc "+y
 vmap C "+y
+vmap X "+x
 
 nmap <leader>bd :Bdelete<CR>
 nmap <leader>c <Plug>Kwbd
+nmap <leader>cd :chdir %:h<CR>
 nmap <leader>d :NERDTreeToggle<CR>
 nmap <leader>f :NERDTreeFind<CR>
 
@@ -234,7 +236,7 @@ set linebreak
 set matchpairs+=<:>
 set modeline
 set modelines=5
-set mouse=vi
+set mouse=a
 set nocompatible
 set nospell
 set noeb vb t_vb=
