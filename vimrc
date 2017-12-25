@@ -28,6 +28,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'bronson/vim-trailing-whitespace'
 "Plugin 'Quramy/vim-js-pretty-template'
 Plugin 'jason0x43/vim-js-indent'
+Plugin 'python-mode/python-mode.git'
 
 call vundle#end()
 
