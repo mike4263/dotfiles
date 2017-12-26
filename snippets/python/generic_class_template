@@ -1,0 +1,12 @@
+
+class BaseClass():
+    """ Basic Class Purpose
+
+    Instance Variables
+    - uno (blah)
+    - dos (blah)
+
+    """
+    def __init__(self, uri):
+        pass
+

@@ -17,11 +17,13 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-dispatch'
+Plugin 'tell-k/vim-autopep8'
 Plugin 'wincent/command-t'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'Quramy/vim-js-pretty-template'
+"Plugin 'leafgarland/typescript-vim'
+"Plugin 'Quramy/vim-jspretty-template'
 "Plugin 'Quaramy/tsuquyomi'
 Plugin 'Shougo/vimproc.vim'
+Plugin 'joereynolds/SQHell.vim'
 "Plugin 'valloric/YouCompleteMe'
 Plugin 'jiangmiao/auto-pairs'
 "Plugin 'bdauria/angular-cli'
@@ -29,6 +31,7 @@ Plugin 'bronson/vim-trailing-whitespace'
 "Plugin 'Quramy/vim-js-pretty-template'
 Plugin 'jason0x43/vim-js-indent'
 Plugin 'python-mode/python-mode.git'
+"Plugin 'python-rope/ropevim'
 
 call vundle#end()
 
@@ -282,4 +285,30 @@ autocmd FileType typescript JsPreTmpl html
 autocmd FileType typescript syn clear foldBraces
 
 map <C-E> <C-W>
+
+
+
+" python-mode stuff
+"
+let g:pymode_options = 1
+let g:pymode_motion = 1
+let g:pymode_trim_whitespaces = 1
+let g:pymode_quickfix_minheight = 1
+let g:pymode_quickfix_maxheight = 3
+"let g:pymode_python = 'python3'
+let g:pymode_folding = 0
+let g:ropevim_vim_completion=1
+let g:ropevim_extended_complete=1
+let g:ropevim_vim_completion=1
+let g:rope_autoimport_modules = ['os', 'shutil', 'datetime', 'unittest', 'records', 'click', 'ttlesrequests']
+let g:pymode_rope_completion = 1
+let g:pymode_rope_autoimport = 1
+let g:pymode_rope_autoimport_modules = ['os', 'shutil', 'datetime', 'unittest', 'records', 'click', 'ttlesrequests']
+let g:pymode_rope_autoimport_modules = 1
+
+noremap <leader>pgcm :-1read $HOME/dotfiles/snippets/python/generic_class_method<CR>jwwcw
+noremap <leader>pgct :-1read $HOME/dotfiles/snippets/python/generic_class_template<CR>jwcw
+
+autocmd FileType python noremap <buffer> <leader>a8 :call Autopep8()<CR>:w<CR>
+let g:autopep8_disable_show_diff=1
 
