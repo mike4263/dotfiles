@@ -25,7 +25,7 @@ Plugin 'wincent/command-t'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'joereynolds/SQHell.vim'
 "Plugin 'valloric/YouCompleteMe'
-Plugin 'jiangmiao/auto-pairs'
+"Plugin 'jiangmiao/auto-pairs'
 "Plugin 'bdauria/angular-cli'
 Plugin 'bronson/vim-trailing-whitespace'
 "Plugin 'Quramy/vim-js-pretty-template'
@@ -143,15 +143,20 @@ nmap <leader>] :TagbarToggle<CR>
 nmap <leader>a :Ack
 nmap <leader>b :CommandTBuffer<CR>
 
+
+nmap <leader>bd :Bdelete<CR>
+nmap <leader>c <Plug>Kwbd
+nmap <leader>cd :chdir %:h<CR>
+
+"set cursorline " cross hair mode
+nmap <leader>ch :set cursorcolumn! cursorline!<CR>
+
 " lets have sane C+P for once!! 12/13/17
 nmap <leader>cv "+p
 nmap <leader>cc "+y
 vmap C "+y
 vmap X "+x
 
-nmap <leader>bd :Bdelete<CR>
-nmap <leader>c <Plug>Kwbd
-nmap <leader>cd :chdir %:h<CR>
 nmap <leader>d :NERDTreeToggle<CR>
 nmap <leader>f :NERDTreeFind<CR>
 
@@ -175,13 +180,14 @@ nmap <leader>go :Git checkout<Space>
 nmap <leader>gps :Dispatch! git push<CR>
 nmap <leader>gpl :Dispatch! git pull<CR>
 nmap <leader>mci :Dispatch! mvn clean install -DskipTests=true<CR>
+nmap <leader>mt :!make test<CR>
 nmap <leader>mn :set mouse=a nu<CR>
 nmap <leader>mj :set mouse= nonu<CR>
 
-nmap <leader>ch :set cursorcolumn! cursorline!<CR> 
-"set cursorline " cross hair mode
 
 nmap <leader>q :q
+nmap <leader>sl :set list!
+
 
 " window management
 
@@ -308,7 +314,11 @@ let g:pymode_rope_autoimport_modules = 1
 
 noremap <leader>pgcm :-1read $HOME/dotfiles/snippets/python/generic_class_method<CR>jwwcw
 noremap <leader>pgct :-1read $HOME/dotfiles/snippets/python/generic_class_template<CR>jwcw
+noremap <leader>pgtm :-1read $HOME/dotfiles/snippets/python/generic_test_method<CR>jwwcw
 
 autocmd FileType python noremap <buffer> <leader>a8 :call Autopep8()<CR>:w<CR>
+autocmd FileType python noremap <buffer> <leader>a8 :call Autopep8()<CR>:w<CR>
+autocmd FileType python set sw=4 ts=2 et
 let g:autopep8_disable_show_diff=1
+
 
