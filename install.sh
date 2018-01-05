@@ -2,11 +2,11 @@
 
 # check pre-reqs
 if [[ ! -e ~/.vim/bundle/Vundle.vim ]]; then
-  echo "Installing Vundle"
+  echo "Installing Vundle"    
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 fi
 
-if [[ ! -e ~/.oh-my-zsh ]]; then 
+if [[ ! -e ~/.oh-my-zsh ]]; then
   echo "Installing oh-my-zsh.."
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   rm -rf ~/.oh-my-zsh/custom
@@ -32,6 +32,11 @@ if [[ ! -e ~/.vimbkup ]]; then
   echo "Creating backup directory.."
 	mkdir ~/.vimbkup
 fi
+
+
+mkdir -p ~/.git/hooks
+ln -f -s ~/dotfiles/git/config ~/.git/config
+ln -f -s ~/dotfiles/git/pre-commit.git.sh ~/.git/hooks/pre-commit
 
 
 echo "Manual Steps: "

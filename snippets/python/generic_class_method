@@ -1,0 +1,14 @@
+
+    def generic_method(self):
+        """ Method that does stuff
+
+            Positional Arguments:
+            content (str) - the plain text content of the epigram
+
+            Keyword Arguments:
+            uuid (str) - a unique id for the item (generated if blank)
+
+            Return:
+            object (str) - desc
+        """
+        raise NotImplementedError()
