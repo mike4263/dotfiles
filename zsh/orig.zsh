@@ -574,9 +574,9 @@ bindkey -M vicmd v edit-command-line
 
 echo
 echo
-fortune
+#fortune
 echo
 echo
 
 
-
+. ~/dotfiles/zsh/oc.zsh
