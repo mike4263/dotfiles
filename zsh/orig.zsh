@@ -321,14 +321,6 @@ function mdc {
     mkdir "$1" && cd "$1"
 }
 
-
-function evaas { 
-    curl -H "Content-Type: application/json" -w "\n\n%{http_code}\n" "http://localhost:8080/evaas/rest/determination/cev/" -d @"$1" 
-}
-
-function evaasDev { 
-    curl -H "Content-Type: application/json" -w "\n\n%{http_code}\n" "http://devap03:8080/evaas/rest/determination/cev/" -d @"$1" 
-}
 function mvcd () {
   mv "$1" "$2" && cd "$2"
 }
@@ -420,7 +412,7 @@ alias df="df -hT"
 alias lsd='ls -ld *(-DN)'
 
 
-alias -g S='&> /dev/null &'
+alias -g NBG='&> /dev/null &'
 
 #### single letter aliases ###
 #alias -g c='cat'
@@ -441,16 +433,6 @@ alias r='rm -r'
 function pg () {
     ps aux | grep -i "$1" | grep -v 'grep'
 }
-
-# for posterity
-#function sqlCentral() {
-#   nlwrap sqlplus developer/fuel@fccgp01.motricity.com @"$1"
-#}
-#
-#function sqlContent() {
-#  nlwrap sqlplus qamon/qamon@cgatldb @"$1"
-#}
-#
 
 function lsofgu() {
  lsofg "$1" | a 2 | uniq
@@ -514,33 +496,10 @@ alias vm="sudo virsh"
 alias vml="sudo virsh list"
 alias vmc="sudo virsh console"
 
-
-
 alias cap="ru"
 alias find='find .'
 
-
-#alias ajd='autojump -a `pwd`'
-#alias j=autojump
-#. /usr/local/etc/autojump.zsh
-#export AUTOJUMP_IGNORE_CASE=1
-#
-alias startml='nohup VBoxHeadless --startvm MarkLogicRHEL &'
-
 alias gvim='/Applications/MacVim.app/Contents/MacOS/Vim -g'
-
-function vpn-dev() {
-
-    echo "Paste password" 
-    cat | sudo openconnect --authgroup=FFE-Dev -b --no-cert-check -u mbattles --passwd-on-stdin https://sslvpn.ecap.cms.gov
-}
-function vpn-mgmt() {
-
-    echo "Paste password" 
-    cat | sudo openconnect --authgroup=FFE-Mgmt -b --no-cert-check -u mbattles --passwd-on-stdin https://sslvpn.ecap.cms.gov
-}
-
-alias updateDPM="rsync -ravz -e "ssh -i /home/mike/prod/prod_rsa" ~/dpm/lib dpm@prodap12:dpm/"
 
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
