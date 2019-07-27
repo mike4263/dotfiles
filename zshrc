@@ -44,3 +44,6 @@ plugins=(git svn osx  mvn cp autojump copydir copyfile dircycle gnu-utils)
 
 source $ZSH/oh-my-zsh.sh
 
+alias fim="docker run -v ~/.fim/:/var/fim mike4263/fim:latest"
+alias fim="docker run -v ~/.fim/:/var/fim "
+alias fim="docker run -v ~/.fim/:/var/fim fim:latest "
