@@ -56,3 +56,6 @@ alias fim="docker run -v ~/.fim/:/var/fim mike4263/fim:latest"
 alias fim="docker run -v ~/.fim/:/var/fim "
 alias fim="docker run -v ~/.fim/:/var/fim fim:latest "
 
+
+# this allows you to use this dotfiles directly  
+alias dgit="git --git-dir ~/.dotfiles/.git --work-tree=$HOME"
