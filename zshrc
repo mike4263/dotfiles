@@ -44,6 +44,15 @@ plugins=(git svn osx  mvn cp autojump copydir copyfile dircycle gnu-utils)
 
 source $ZSH/oh-my-zsh.sh
 
+
+function recjump() {
+  asciinema rec -i 1 -c "ssh root@jumphost01.lab.odie" /opt/odie/demo/`perl -e 'print time;'`-jumphost-$1
+}
+
+function recshell() {
+  asciinema rec -i 1 -c zsh /opt/odie/demo/`perl -e 'print time;'`-zsh-$1
+}
 alias fim="docker run -v ~/.fim/:/var/fim mike4263/fim:latest"
 alias fim="docker run -v ~/.fim/:/var/fim "
 alias fim="docker run -v ~/.fim/:/var/fim fim:latest "
+

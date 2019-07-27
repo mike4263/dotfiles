@@ -322,6 +322,7 @@ noremap <leader>pgtm :-1read $HOME/dotfiles/snippets/python/generic_test_method<
 autocmd FileType python noremap <buffer> <leader>a8 :call Autopep8()<CR>:w<CR>
 autocmd FileType python noremap <buffer> <leader>a8 :call Autopep8()<CR>:w<CR>
 autocmd FileType python set sw=4 ts=2 et
-let g:autopep8_disable_show_diff=1
+"let g:autopep8_disable_show_diff=1
 
+set sw=2 ts=2 ai et
 
